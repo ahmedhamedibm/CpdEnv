@@ -4,7 +4,7 @@ BIBlue='\033[1;94m'
 NC='\033[0m'
 
 # 1.Source cpd_vars.sh
-source cpd_vars1.sh
+source cpd_vars.sh
 
 # 2.Login
 OCP_API_SERVER=$(oc whoami --show-server=true)
