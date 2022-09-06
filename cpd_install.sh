@@ -1,7 +1,33 @@
-#1. Install Cpd-cli
-. nei --installdep --installcpd --installpodman
+# Set color
 BIBlue='\033[1;94m'
 NC='\033[0m'
+
+#1. Install Cpd-cli
+server_info(){
+
+    export DISTRO=$(lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || uname -om || echo "")
+    export ARCHITECTURE=$(uname -m)
+    export BITS=$(getconf LONG_BIT)
+    
+    }
+server_info
+if [[ -z "$(type -P nei)" ]]; then
+    if [[ "$DISTRO" == *Ubuntu* || "$DISTRO" == *Debian* || "$DISTRO" == *RED*HAT* || "$DISTRO" == *RHEL* || "$DISTRO" == *CentOS* || "$DISTRO" == Fedora  || "$DISTRO" == *Red*Hat*Enterprise*Linux* ]]; then
+        wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-linux-EE-11.2.0.tgz || sudo wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-linux-EE-11.2.0.tgz
+        tar -zxvf cpd-cli-linux-EE-11.2.0.tgz || sudo tar -zxvf cpd-cli-linux-EE-11.2.0.tgz
+        rm -rf cpd-cli-linux-EE-11.2.0.tgz || sudo rm -rf cpd-cli-linux-EE-11.2.0.tgz
+        echo "export PATH=$PWD/cpd-cli-linux-EE-11.2.0-40:$PATH" >> ~/.bashrc || sudo echo "export PATH=$PWD/cpd-cli-linux-EE-11.2.0-40:$PATH" >> ~/.bashrc
+        source ~/.bashrc
+    else
+        wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-darwin-EE-11.2.0.tgz || sudo wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-darwin-EE-11.2.0.tgz
+        tar -zxvf cpd-cli-darwin-EE-11.2.0.tgz || sudo tar -zxvf cpd-cli-darwin-EE-11.2.0.tgz
+        rm -rf cpd-cli-darwin-EE-11.2.0.tgz || sudo rm -rf cpd-cli-darwin-EE-11.2.0.tgz
+        echo "export PATH=$PWD/cpd-cli-darwin-EE-11.2.0-40:$PATH" >> ~/.bashrc || sudo echo "export PATH=$PWD/cpd-cli-darwin-EE-11.2.0-40:$PATH" >> ~/.bashrc
+        source ~/.zshrc
+    fi
+else
+    . nei --installdep --installcpd --installpodman
+fi
 
 # 1.Source cpd_vars.sh
 source cpd_vars.sh
