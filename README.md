@@ -25,7 +25,7 @@ chmod +x cpd_install.sh
 #####	*Note ensure the url is up-to-date in the curl command below by going to the raw view of the cpd_install_helper.sh file in the repo and copying the link.
 ```bash
 # Curl the helper script to create the directory ~/cpd_install_env that will contain cpd_vars.sh and cpd_install.sh 
-curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHNDTDOWTDFOJ4AQ7GDDEFHPQ | bash
+curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHO2Z3M2MDLB2NXOYDLDEICQ4 | bash
 
 # Change directory into ~/cpd_install_env
 cd ~/cpd_install_env
@@ -33,7 +33,13 @@ cd ~/cpd_install_env
 ## Usage
 After installation or pulling the repo.
 1. Edit the cpd_vars.sh and input the values appropriate to your cluster. There are comments in the cpd_vars.sh file to guide some of the information needed.
-2. Run the cpd_install.sh
+2. 
+```bash
+# On your machine run ./cpd_install.sh
+./cpd_install.sh
+# If you are using a bastion run
+nohup ./cpd_install_bastion.sh
+```
 
 
 ## Warning
