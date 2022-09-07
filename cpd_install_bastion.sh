@@ -76,14 +76,14 @@ source cpd_vars.sh
 OCP_API_SERVER=$(oc whoami --show-server=true)
 OCP_TOKEN=$(oc whoami -t)
 echo -e "${BIBlue}cpd-cli manage login-to-ocp${NC}"
-cpd-cli manage login-to-ocp --token=${OCP_TOKEN} --server=${OCP_API_SERVER}
+nohup cpd-cli manage login-to-ocp --token=${OCP_TOKEN} --server=${OCP_API_SERVER}
 
 # 3.Apply OLM
 echo -e "${BIBlue}cpd-cli manage apply-olm${NC}"
-cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
+nohup cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
 
 # 4.Update pull secret
-cpd-cli manage add-icr-cred-to-global-pull-secret ${IBM_ENTITLEMENT_KEY}
+nohup cpd-cli manage add-icr-cred-to-global-pull-secret ${IBM_ENTITLEMENT_KEY}
 
 # 5.Create DaemonSet to Update Secret
 cat <<EOF |oc apply -f -
@@ -321,7 +321,7 @@ oc patch NamespaceScope common-service \
 
 # 7.Apply Custom Resource
 echo -e "${BIBlue}cpd-cli manage apply-cr${NC}"
-cpd-cli manage apply-cr --components=${CP4D_OPERATOR_COMPONENTS} --release=${CP4D_VERSION} --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --block_storage_class=${STG_CLASS_BLOCK} --file_storage_class=${STG_CLASS_FILE} --license_acceptance=true 
+nohup cpd-cli manage apply-cr --components=${CP4D_OPERATOR_COMPONENTS} --release=${CP4D_VERSION} --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --block_storage_class=${STG_CLASS_BLOCK} --file_storage_class=${STG_CLASS_FILE} --license_acceptance=true 
 
 # 8. Delete Pull Secret DaemonSet
 cat <<EOF |oc delete -f -
@@ -552,4 +552,4 @@ EOF
 
 # 9. Get Console Info
 echo -e "${BIBlue}Console Info:${NC}"
-cpd-cli manage get-cpd-instance-details --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --get_admin_initial_credentials=true
+no hup cpd-cli manage get-cpd-instance-details --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --get_admin_initial_credentials=true
