@@ -33,7 +33,7 @@ cd ~/cpd_install_env
 ## Usage
 After installation or pulling the repo.
 1. Edit the cpd_vars.sh and input the values appropriate to your cluster. There are comments in the cpd_vars.sh file to guide some of the information needed.
-2. 
+2. Run the command below based of your machine.
 ```bash
 # On your machine run ./cpd_install.sh
 ./cpd_install.sh
