@@ -27,8 +27,10 @@ if [[ -z "$(type -P nei)" ]]; then
         source ~/.zshrc
     fi
 else
-    . nei --installdep --installcpd --installpodman
+    . nei --installdep --installcpd --installpodman --installibmc
 fi
+
+curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
 
 if [[ -z "$(type -P oc)" ]] && [[ -z "$(type -P nei)" ]]; then
     if [[ "$DISTRO" == *Ubuntu* || "$DISTRO" == *Debian* || "$DISTRO" == *RED*HAT* || "$DISTRO" == *RHEL* || "$DISTRO" == *CentOS* || "$DISTRO" == Fedora  || "$DISTRO" == *Red*Hat*Enterprise*Linux* ]]; then
