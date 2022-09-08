@@ -26,7 +26,7 @@ chmod +x cpd_install_bastion.sh
 #####	*Note ensure the url is up-to-date in the curl command below by going to the raw view of the cpd_install_helper.sh file in the repo and copying the link.
 ```bash
 # Curl the helper script to create the directory ~/cpd_install_env that will contain cpd_vars.sh and cpd_install.sh 
-curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHK27MZIGVG66VKYJJTDENRKC | bash
+curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/dev/cpd_install_helper.sh?token=AACTOHOSE2LI72ZG4N3JRKLDEO2TI | bash
 
 # Change directory into ~/cpd_install_env
 cd ~/cpd_install_env
