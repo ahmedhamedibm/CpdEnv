@@ -34,11 +34,21 @@ cd ~/cpd_install_env
 ## Usage
 After installation or pulling the repo.
 1. Edit the cpd_vars.sh and input the values appropriate to your cluster. There are comments in the cpd_vars.sh file to guide some of the information needed.
-2. Run the command below based of your machine.
+
+2. Login in to the openshift cluster with your oc login command copied from the openshift console. Example below 
 ```bash
-# On your machine run ./cpd_install.sh
+oc login --token=sha256~LKh9Gqe0db_BrjlUR2L_e84NRNd1c8CgfkqoOimgAQg --server=https://c111-e.us-east.containers.cloud.ibm.com:31969
+```
+If your openshift cluster is on ibmcloud login and ensure you select the account associated with your openshift cluster.
+```bash
+ibmcloud login --sso --no-region
+```
+
+3. Run the command below based of your environment.
+```bash
+# If on your local machine run ./cpd_install.sh
 ./cpd_install.sh
-# If you are using a bastion run
+# If you are using a bastion or cloud instance run the command below.
 nohup ./cpd_install_bastion.sh
 ```
 
