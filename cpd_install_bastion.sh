@@ -70,7 +70,7 @@ else [[ -n "$(type -P nei)" ]];
 fi
 
 # 1.Source cpd_vars.sh
-source cpd_vars.sh
+source ./cpd_vars.sh
 
 # 2.Login
 OCP_API_SERVER=$(oc whoami --show-server=true)
@@ -552,4 +552,4 @@ EOF
 
 # 9. Get Console Info
 echo -e "${BIBlue}Console Info:${NC}"
-no hup cpd-cli manage get-cpd-instance-details --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --get_admin_initial_credentials=true
+cpd-cli manage get-cpd-instance-details --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --get_admin_initial_credentials=true
