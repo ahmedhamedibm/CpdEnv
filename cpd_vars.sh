@@ -33,7 +33,10 @@ export PROJECT_CPD_INSTANCE=cpd-instance
 # Storage
 # ------------------------------------------------------------------------------
 
+# Block Storage
 export STG_CLASS_BLOCK=ibmc-block-gold
+
+# File Storage
 export STG_CLASS_FILE=ibmc-file-gold-gid
 
 # ------------------------------------------------------------------------------
@@ -61,6 +64,7 @@ export IBM_ENTITLEMENT_KEY=<enter your IBM entitlement API key>
 # Cloud Pak for Data version
 # ------------------------------------------------------------------------------
 
+# Version of cp4d you would like to install
 export CP4D_VERSION=4.5.2
 
 
