@@ -14,9 +14,10 @@ git clone https://github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install.git
 # Change into the directory of the repo 
 cd Cp4d-Cpdcli-Install
 
-# Make both bash files executable
+# Make all bash files executable
 chmod +x cpd_vars.sh
 chmod +x cpd_install.sh
+chmod +x cpd_install_bastion.sh
 
 ```
 
@@ -25,7 +26,7 @@ chmod +x cpd_install.sh
 #####	*Note ensure the url is up-to-date in the curl command below by going to the raw view of the cpd_install_helper.sh file in the repo and copying the link.
 ```bash
 # Curl the helper script to create the directory ~/cpd_install_env that will contain cpd_vars.sh and cpd_install.sh 
-curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHO2Z3M2MDLB2NXOYDLDEICQ4 | bash
+curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHK27MZIGVG66VKYJJTDENRKC | bash
 
 # Change directory into ~/cpd_install_env
 cd ~/cpd_install_env
