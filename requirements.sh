@@ -68,3 +68,5 @@ if [[ -z "$(type -P oc)" ]] && [[ -z "$(type -P nei)" ]]; then
 else [[ -n "$(type -P nei)" ]];
     . nei --installoc
 fi
+
+curl -sSL https://raw.github.ibm.com/National-Northeast-1/Node-Reloader/main/node_reload_helper.sh?token=AACTOHP5D5DLHWK2272SOPDDESUX4 | bash || sudo curl -sSL https://raw.github.ibm.com/National-Northeast-1/Node-Reloader/main/node_reload_helper.sh?token=AACTOHP5D5DLHWK2272SOPDDESUX4 | bash 

@@ -11,14 +11,10 @@ OCP_TOKEN=$(oc whoami -t)
 echo -e "${BIBlue}cpd-cli manage login-to-ocp${NC}"
 nohup cpd-cli manage login-to-ocp --token=${OCP_TOKEN} --server=${OCP_API_SERVER}
 
-# 3.Apply OLM
-echo -e "${BIBlue}cpd-cli manage apply-olm${NC}"
-nohup cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
-
-# 4.Update pull secret
+# 3.Update pull secret
 nohup cpd-cli manage add-icr-cred-to-global-pull-secret ${IBM_ENTITLEMENT_KEY}
 
-# 5.Create DaemonSet to Update Secret and reload nodes
+# 4.Create DaemonSet to Update Secret and reload nodes
 cat <<EOF |oc apply -f -
 ---
 kind: Project
@@ -245,9 +241,14 @@ volumes:
   - '*'
 EOF
 
-if [[ "${OPENSHIFT_TYPE}" == roks]]; then
+if [[ "${OPENSHIFT_TYPE}" == roks ]]; then
     node_reload "${OCP_URL}" 
 fi
+
+# 5.Apply OLM
+echo -e "${BIBlue}cpd-cli manage apply-olm${NC}"
+nohup cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
+nohup cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
 
 # 6.Patch OLM
 echo -e "${BIBlue}oc patch NamespaceScope${NC}"
@@ -258,6 +259,7 @@ oc patch NamespaceScope common-service \
 
 # 7.Apply Custom Resource
 echo -e "${BIBlue}cpd-cli manage apply-cr${NC}"
+nohup cpd-cli manage apply-cr --components=${CP4D_OPERATOR_COMPONENTS} --release=${CP4D_VERSION} --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --block_storage_class=${STG_CLASS_BLOCK} --file_storage_class=${STG_CLASS_FILE} --license_acceptance=true 
 nohup cpd-cli manage apply-cr --components=${CP4D_OPERATOR_COMPONENTS} --release=${CP4D_VERSION} --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --block_storage_class=${STG_CLASS_BLOCK} --file_storage_class=${STG_CLASS_FILE} --license_acceptance=true 
 
 # 8. Delete Pull Secret DaemonSet
