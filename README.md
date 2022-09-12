@@ -32,8 +32,16 @@ curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/ma
 # Change directory into ~/cpd_install_env
 cd ~/cpd_install_env
 ```
+
+## Prerequisite
+If any of the following tools are not installed, ensure you run the requirements.sh script.
+1. ibmcloud command
+2. oc command
+3. node_reload
+4. podman
+
 ## Usage
-After installation or pulling the repo.
+After installation or pulling the repo, if all tools listed in the prerequisite are present you can skip step 1 below.
 
 1. Run the ./requirements.sh and source your profile
 ```bash

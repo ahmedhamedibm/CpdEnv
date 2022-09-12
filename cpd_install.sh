@@ -6,9 +6,8 @@ NC='\033[0m'
 source ./cpd_vars.sh
 
 # 2.Login
-OCP_API_SERVER=$(oc whoami --show-server=true)
-OCP_TOKEN=$(oc whoami -t)
-echo -e "${BIBlue}cpd-cli manage login-to-ocp${NC}"
+echo -e "${BIBlue}!!!! CPD-CLI MANAGE LOGIN-TO-OCP !!!!${NC}"
+echo -e "${BIBlue}!!!! CPD-CLI MANAGE LOGIN-TO-OCP !!!!${NC}"
 cpd-cli manage login-to-ocp --token=${OCP_TOKEN} --server=${OCP_API_SERVER}
 
 # 3.Update pull secret
@@ -242,23 +241,24 @@ volumes:
 EOF
 
 if [[ "${OPENSHIFT_TYPE}" == roks ]]; then
+    echo -e "${BIBlue}!!!! NODE RELOAD !!!! ${NC}"
     node_reload "${OCP_URL}" 
 fi
 
 # 5.Apply OLM
-echo -e "${BIBlue}cpd-cli manage apply-olm${NC}"
+echo -e "${BIBlue}!!!! CPD-CLI MANAGE APPLY-OLM !!!!${NC}"
 cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
 cpd-cli manage apply-olm --release=${CP4D_VERSION} --components=${CP4D_OPERATOR_COMPONENTS}
 
 # 6.Patch OLM
-echo -e "${BIBlue}oc patch NamespaceScope${NC}"
+echo -e "${BIBlue}!!!! OC PATCH NAMESPACESCOPE !!!!${NC}"
 oc patch NamespaceScope common-service \
     -n ${PROJECT_CPD_OPS} \
     --type=merge \
     --patch='{"spec": {"csvInjector": {"enable": true} } }'
 
 # 7.Apply Custom Resource
-echo -e "${BIBlue}cpd-cli manage apply-cr${NC}"
+echo -e "${BIBlue}!!!! CPD-CLI MANAGE APPLY-CR !!!!${NC}"
 cpd-cli manage apply-cr --components=${CP4D_OPERATOR_COMPONENTS} --release=${CP4D_VERSION} --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --block_storage_class=${STG_CLASS_BLOCK} --file_storage_class=${STG_CLASS_FILE} --license_acceptance=true 
 cpd-cli manage apply-cr --components=${CP4D_OPERATOR_COMPONENTS} --release=${CP4D_VERSION} --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --block_storage_class=${STG_CLASS_BLOCK} --file_storage_class=${STG_CLASS_FILE} --license_acceptance=true 
 
@@ -490,5 +490,5 @@ volumes:
 EOF
 
 # 9. Get Console Info
-echo -e "${BIBlue}Console Info:${NC}"
+echo -e "${BIBlue}!!!! CONSOLE INFO: !!!!${NC}"
 cpd-cli manage get-cpd-instance-details --cpd_instance_ns=${PROJECT_CPD_INSTANCE} --get_admin_initial_credentials=true
