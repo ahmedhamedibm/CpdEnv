@@ -105,7 +105,27 @@ install_node_reload(){
     source ~/.bashrc || sudo source ~/.bashrc || source ~/.zshrc || sudo source ~/.zshrc   
 }
 
-if [[ -z "$(type -P podman)" ]] || [[ -z "$(type -P oc)" ]] || [[ -z "$(type -P ibmcloud)" ]] || [[ -z "$(type -P node_reload)" ]]; then
+# Cpd CLi
+install_cpd_cli(){
+    if [[ "$DISTRO" == *Ubuntu* || "$DISTRO" == *Debian* || "$DISTRO" == *RED*HAT* || "$DISTRO" == *RHEL* || "$DISTRO" == *CentOS* || "$DISTRO" == Fedora  || "$DISTRO" == *Red*Hat*Enterprise*Linux* ]]; then
+        wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-linux-EE-11.2.0.tgz || sudo wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-linux-EE-11.2.0.tgz
+        tar -zxvf cpd-cli-linux-EE-11.2.0.tgz || sudo tar -zxvf cpd-cli-linux-EE-11.2.0.tgz
+        rm -rf cpd-cli-linux-EE-11.2.0.tgz || sudo rm -rf cpd-cli-linux-EE-11.2.0.tgz
+        mv cpd-cli-linux-EE-11.2.0-40 $HOME/bin/ || sudo mv cpd-cli-linux-EE-11.2.0-40 $HOME/bin/
+        echo 'export PATH=$PATH":$HOME/bin/cpd-cli-linux-EE-11.2.0-40"' >> ~/.bashrc || sudo echo 'export PATH=$PATH":$HOME/bin/cpd-cli-linux-EE-11.2.0-40"' >> ~/.bashrc
+        source ~/.bashrc
+    else
+        wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-darwin-EE-11.2.0.tgz || sudo wget https://github.com/IBM/cpd-cli/releases/download/v11.2.0/cpd-cli-darwin-EE-11.2.0.tgz
+        tar -zxvf cpd-cli-darwin-EE-11.2.0.tgz || sudo tar -zxvf cpd-cli-darwin-EE-11.2.0.tgz
+        rm -rf cpd-cli-darwin-EE-11.2.0.tgz || sudo rm -rf cpd-cli-darwin-EE-11.2.0.tgz
+        mv cpd-cli-darwin-EE-11.2.0-40 $HOME/bin/ || sudo mv cpd-cli-darwin-EE-11.2.0-40 $HOME/bin/
+        echo 'export PATH=$PATH":$HOME/bin/cpd-cli-darwin-EE-11.2.0-40"' >> ~/.zshrc || sudo echo 'export PATH=$PATH":$HOME/bin/cpd-cli-darwin-EE-11.2.0-40"' >> ~/.zshrc
+        source ~/.zshrc
+    fi
+
+}
+
+if [[ -z "$(type -P podman)" ]] || [[ -z "$(type -P oc)" ]] || [[ -z "$(type -P ibmcloud)" ]] || [[ -z "$(type -P node_reload)" ]] || [[ -z "$(type -P cpd-cli)"]]; then
     install_deps
 else
     exit
@@ -125,4 +145,8 @@ fi
 
 if [[ -z "$(type -P node_reload)" ]]; then
     install_node_reload
+fi
+
+if [[ -z "$(type -P cod-cli)" ]]; then
+    install_cpd_cli
 fi
