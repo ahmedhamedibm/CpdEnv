@@ -147,6 +147,6 @@ if [[ -z "$(type -P node_reload)" ]]; then
     install_node_reload
 fi
 
-if [[ -z "$(type -P cod-cli)" ]]; then
+if [[ -z "$(type -P cpd-cli)" ]]; then
     install_cpd_cli
 fi
