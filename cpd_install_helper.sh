@@ -6,7 +6,7 @@ curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/ma
 chmod +x ~/cpd_install_env/cpd_vars.sh || sudo chmod +x ~/cpd_install_env/cpd_vars.sh
 
 #Curl and create requirements.sh
-curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/requirements.sh?token=AACTOHI26CZIKOSYTMO5CXDDFTWBC > ~/cpd_install_env/requirements.sh 
+curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/requirements.sh?token=AACTOHNT4ORSCURCWK6HFW3DFTXYU > ~/cpd_install_env/requirements.sh 
 chmod +x ~/cpd_install_env/requirements.sh || sudo chmod +x ~/cpd_install_env/requirements.sh
 
 # Curl and create cpd_install.sh as executable
