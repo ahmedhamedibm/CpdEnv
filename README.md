@@ -27,7 +27,7 @@ chmod +x requirements.sh
 #####	*Note ensure the url is up-to-date in the curl command below by going to the raw view of the cpd_install_helper.sh file in the repo and copying the link.
 ```bash
 # Curl the helper script to create the directory ~/cpd_install_env that will contain all needed scripts
-curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHIYXPKPW2RWSRCBZ2TDFTWHE | bash
+curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHKEIT7YNXIZRTM2W6TDFTX36 | bash
 
 # Change directory into ~/cpd_install_env
 cd ~/cpd_install_env
