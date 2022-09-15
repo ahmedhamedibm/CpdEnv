@@ -125,7 +125,7 @@ install_cpd_cli(){
 
 }
 
-if [[ -z "$(type -P podman)" ]] || [[ -z "$(type -P oc)" ]] || [[ -z "$(type -P ibmcloud)" ]] || [[ -z "$(type -P node_reload)" ]] || [[ -z "$(type -P cpd-cli)"]]; then
+if [[ -z "$(type -P podman)" ]] || [[ -z "$(type -P oc)" ]] || [[ -z "$(type -P ibmcloud)" ]] || [[ -z "$(type -P node_reload)" ]] || [[ -z "$(type -P cpd-cli)" ]]; then
     install_deps
 else
     exit
