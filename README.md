@@ -17,17 +17,16 @@ cd Cp4d-Cpdcli-Install
 # Make all bash files executable
 chmod +x cpd_vars.sh
 chmod +x cpd_install.sh
-chmod +x cpd_install_bastion.sh
 chmod +x requirements.sh
 
 ```
 
 
-### ----------------------------------------------------------------------------OR----------------------------------------------------------------------
-#####	*Note ensure the url is up-to-date in the curl command below by going to the raw view of the cpd_install_helper.sh file in the repo and copying the link.
+### Or
+
 ```bash
 # Curl the helper script to create the directory ~/cpd_install_env that will contain all needed scripts
-curl -sSL https://raw.github.ibm.com/National-Northeast-1/Cp4d-Cpdcli-Install/master/cpd_install_helper.sh?token=AACTOHKHDHG2MA23I35W57DDGHKKE | bash
+curl -sSL https://raw.githubusercontent.com/ahmedhamedibm/CpdEnv/master/cpd_install_helper.sh | bash
 
 # Change directory into ~/cpd_install_env
 cd ~/cpd_install_env
@@ -68,7 +67,7 @@ ibmcloud login --sso --no-region
 # If on your local machine run ./cpd_install.sh
 ./cpd_install.sh
 # If you are using a bastion or cloud instance run the command below.
-nohup ./cpd_install_bastion.sh
+nohup ./cpd_install.sh
 ```
 
 
